@@ -16,7 +16,6 @@ interface SocialAuthArgs{
 interface CreateUserResponse{
     success: boolean;
     user:User;
-
 }
 
 const authApiSlice = apiSlice.injectEndpoints({
@@ -31,7 +30,6 @@ const authApiSlice = apiSlice.injectEndpoints({
                 headers: {
                     Accept: 'application/json',
                     'Content-Type':'application/x-www-form-urlencoded'
-                    
                 },
                 
             }),
@@ -45,7 +43,7 @@ const authApiSlice = apiSlice.injectEndpoints({
         }),
         register: builder.mutation({
             query:({first_name,last_name,email,password,re_password})=> ({
-                url: '/jwt/users/',
+                url: '/users/',
                 method: 'POST',
                 body:{first_name,last_name,email,password,re_password},
             }),
