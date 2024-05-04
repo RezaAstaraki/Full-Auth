@@ -22,7 +22,6 @@ export default function useRegister() {
     };
   
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-      console.log("submit hit");
       event.preventDefault();
       register({ first_name, last_name, email, password, re_password })
         .unwrap()
@@ -30,8 +29,13 @@ export default function useRegister() {
           toast.success("Please check email to verify account");
           router.push("/auth/login");
         })
-        .catch(() => {
-          toast.error("Failed to register account");
+        .catch((error) => {
+          // console.error("Error:", error);
+
+          // Extract the error message from the error object
+          const errorMessage = error.data.email[0]; // Assuming the error message is the first element of the email array
+    
+          toast.error(errorMessage); // Display the error message to the user
         });
     };
 

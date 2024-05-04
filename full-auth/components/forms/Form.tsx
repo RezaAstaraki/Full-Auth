@@ -7,6 +7,10 @@ interface Config {
   labelId: string;
   type: string;
   value: string;
+  link?: {
+    linkText: string;
+    linkUrl: string;
+  };
   required?: boolean;
 }
 
@@ -34,6 +38,8 @@ export default function Form({
           type={input.type}
           onChange={onChange}
           value={input.value}
+          link={input.link}
+          required={input.required}
         >
           {input.labelText}
         </Input>
@@ -43,6 +49,7 @@ export default function Form({
         <button
           type="submit"
           className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          disabled={isLoading}
         >
           {isLoading ? <Spinner sm /> : `${btnText}`}
         </button>
