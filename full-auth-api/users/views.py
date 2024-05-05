@@ -127,6 +127,8 @@ class CustomTokenVerifyView(TokenVerifyView):
               '**********************verify****************************')
         access_token = request.COOKIES.get('access')
 
+        print(access_token)
+
         if access_token:
             request.data['token'] = access_token
 
